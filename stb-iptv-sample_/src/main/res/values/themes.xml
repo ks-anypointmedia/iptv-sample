@@ -1,0 +1,3 @@
+<resources>
+    <style name="Theme.Stbmulticastsample" parent="@style/Theme.Leanback"/>
+</resources>
