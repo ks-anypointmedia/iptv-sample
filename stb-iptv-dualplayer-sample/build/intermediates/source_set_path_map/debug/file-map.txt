@@ -31,10 +31,10 @@ tv.anypoint.lineartv.sample-core-ktx-1.13.0-29 /Users/ryan/.gradle/caches/transf
 tv.anypoint.lineartv.sample-lifecycle-runtime-2.6.2-30 /Users/ryan/.gradle/caches/transforms-3/e1397e90c4ed12e2e8bc8892d85ac8b3/transformed/lifecycle-runtime-2.6.2/res
 tv.anypoint.lineartv.sample-profileinstaller-1.4.0-31 /Users/ryan/.gradle/caches/transforms-3/f3b7fe453986ed04a9218e4a009568f6/transformed/profileinstaller-1.4.0/res
 tv.anypoint.lineartv.sample-fragment-1.5.4-32 /Users/ryan/.gradle/caches/transforms-3/feb16f976addb9e998206768ea4abab5/transformed/fragment-1.5.4/res
-tv.anypoint.lineartv.sample-pngs-33 /Users/ryan/__work/src/stb-sample/stb-multicast-dual-player-sample/build/generated/res/pngs/debug
-tv.anypoint.lineartv.sample-resValues-34 /Users/ryan/__work/src/stb-sample/stb-multicast-dual-player-sample/build/generated/res/resValues/debug
-tv.anypoint.lineartv.sample-packageDebugResources-35 /Users/ryan/__work/src/stb-sample/stb-multicast-dual-player-sample/build/intermediates/incremental/debug/packageDebugResources/merged.dir
-tv.anypoint.lineartv.sample-packageDebugResources-36 /Users/ryan/__work/src/stb-sample/stb-multicast-dual-player-sample/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
-tv.anypoint.lineartv.sample-merged_res-37 /Users/ryan/__work/src/stb-sample/stb-multicast-dual-player-sample/build/intermediates/merged_res/debug
-tv.anypoint.lineartv.sample-debug-38 /Users/ryan/__work/src/stb-sample/stb-multicast-dual-player-sample/src/debug/res
-tv.anypoint.lineartv.sample-main-39 /Users/ryan/__work/src/stb-sample/stb-multicast-dual-player-sample/src/main/res
+tv.anypoint.lineartv.sample-pngs-33 /Users/ryan/__work/src/stb-sample/stb-iptv-dualplayer-sample/build/generated/res/pngs/debug
+tv.anypoint.lineartv.sample-resValues-34 /Users/ryan/__work/src/stb-sample/stb-iptv-dualplayer-sample/build/generated/res/resValues/debug
+tv.anypoint.lineartv.sample-packageDebugResources-35 /Users/ryan/__work/src/stb-sample/stb-iptv-dualplayer-sample/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+tv.anypoint.lineartv.sample-packageDebugResources-36 /Users/ryan/__work/src/stb-sample/stb-iptv-dualplayer-sample/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+tv.anypoint.lineartv.sample-merged_res-37 /Users/ryan/__work/src/stb-sample/stb-iptv-dualplayer-sample/build/intermediates/merged_res/debug
+tv.anypoint.lineartv.sample-debug-38 /Users/ryan/__work/src/stb-sample/stb-iptv-dualplayer-sample/src/debug/res
+tv.anypoint.lineartv.sample-main-39 /Users/ryan/__work/src/stb-sample/stb-iptv-dualplayer-sample/src/main/res

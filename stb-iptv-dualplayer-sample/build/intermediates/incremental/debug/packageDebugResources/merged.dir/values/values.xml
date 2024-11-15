@@ -6,7 +6,7 @@
     <color name="fastlane_background">#0096a6</color>
     <color name="search_opaque">#ffaa3f</color>
     <color name="selected_background">#ffaa3f</color>
-    <string name="app_name">stb-multicast-sample</string>
+    <string name="app_name">stb-iptv-dualplayer-sample</string>
     <string name="browse_title">Videos by Your Company</string>
     <string name="buy_1">Buy and Own</string>
     <string name="buy_2">AT $9.99</string>
