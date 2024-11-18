@@ -21,8 +21,6 @@ public class ChannelPlayer implements Player.Listener {
                         Util.getUserAgent(context, "ChannelPlayer")
                 );
 
-        DefaultRenderersFactory renderersFactory = new DefaultRenderersFactory(context);
-
         player = channelPlayer;
     }
 

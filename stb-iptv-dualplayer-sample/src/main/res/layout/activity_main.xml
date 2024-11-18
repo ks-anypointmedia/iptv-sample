@@ -21,4 +21,13 @@
             android:layout_height="match_parent"
     />
 
+    <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/adPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            app:use_controller="false"
+            android:visibility="gone"
+    />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

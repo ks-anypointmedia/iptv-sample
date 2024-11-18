@@ -38,11 +38,12 @@ public class MainActivity extends Activity {
         AnypointAdView adView = findViewById(R.id.linearTvAdView);
 
         // Register your custom player to the AnypointAdView.
-        CustomAdPlayer customAdPlayer = new CustomAdPlayer();
+        PlayerView adPlayerView = findViewById(R.id.adPlayer);
+        CustomAdPlayer customAdPlayer = new CustomAdPlayer(this, adPlayerView);
         adView.setAdPlayer(customAdPlayer);
 
-        AnypointAdsManager adsManager = adView.getAnypointAdsManager();
-        AnypointAdsManager.AdsManagerListener adsManagerListener = new AdsManagerListenerImpl(channelPlayer);
+        adsManager = adView.getAnypointAdsManager();
+        AnypointAdsManager.AdsManagerListener adsManagerListener = new AdsManagerListenerImpl(channelPlayer, adPlayerView);
 
         adsManager.addListener(adsManagerListener);
 
