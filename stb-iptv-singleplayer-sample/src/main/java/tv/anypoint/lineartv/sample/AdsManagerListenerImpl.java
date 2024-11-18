@@ -14,8 +14,6 @@ class AdsManagerListenerImpl implements AnypointAdsManager.AdsManagerListener {
     }
 
     public void onPlay(boolean retainChannelStream) {
-        // TODO: stop LinearTV and play ad
-        channelPlayer.play();
     }
 
     @Override
@@ -34,8 +32,6 @@ class AdsManagerListenerImpl implements AnypointAdsManager.AdsManagerListener {
     }
 
     public void onStopped(boolean retainChannelStream) {
-        // ads stopped and play LinearTV
-        channelPlayer.playChannel();
     }
 
     @Override
