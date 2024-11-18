@@ -25,8 +25,8 @@ public class ChannelPlayerWithAd implements AnypointAdPlayer, Player.Listener {
 
     private List<PlaySet> playSets = new ArrayList<>();
     private List<String> mediaUrls = new ArrayList<>();
-    private int currentMediaUrlIndex = 0;
     private long adTotalDuration = 0;
+    private boolean isAdPlaying = false;
 
     public ChannelPlayerWithAd(Context context, PlayerView playerView) {
         dataSourceFactory =
@@ -62,7 +62,32 @@ public class ChannelPlayerWithAd implements AnypointAdPlayer, Player.Listener {
     }
 
     public void stopChannel() {
-        player.release();
+        player.stop();
+    }
+
+    @Override
+    public void load(PlaySet playSet) {
+        Log.i(TVApplication.TAG, "custom player load...");
+
+        playSets.clear();
+        mediaUrls.clear();
+
+        playSets.add(playSet);
+        mediaUrls = playSet.toMediaUrls();
+        adTotalDuration = playSet.getDuration();
+
+        for (AnypointAdPlayer.AnypointAdPlayerCallback videoAdPlayerCallback : videoAdPlayerCallbacks) {
+            Log.d("TEST", "loaded: " + mediaUrls.get(0));
+            videoAdPlayerCallback.onLoaded(mediaUrls.get(0));
+        }
+    }
+
+    @Override
+    public void append(PlaySet playSet) {
+        mediaUrls.addAll(playSet.toMediaUrls());
+        adTotalDuration += playSet.getDuration();
+
+        playSets.add(playSet);
     }
 
     @Override
@@ -80,14 +105,13 @@ public class ChannelPlayerWithAd implements AnypointAdPlayer, Player.Listener {
             );
         }
 
-        // startDelay...
-
         player.setMediaSource(mediaSource);
         player.prepare();
+        isAdPlaying = true;
 
         for (AnypointAdPlayer.AnypointAdPlayerCallback videoAdPlayerCallback : videoAdPlayerCallbacks) {
-            Log.d("TEST", "play url: " + mediaUrls.get(player.getCurrentPeriodIndex()));
-            videoAdPlayerCallback.onPlay(mediaUrls.get(player.getCurrentPeriodIndex()));
+            Log.d("TEST", "play url: " + mediaUrls.get(player.getCurrentMediaItemIndex()));
+            videoAdPlayerCallback.onPlay(mediaUrls.get(player.getCurrentMediaItemIndex()));
         }
     }
 
@@ -123,55 +147,41 @@ public class ChannelPlayerWithAd implements AnypointAdPlayer, Player.Listener {
     }
 
     @Override
-    public void load(PlaySet playSet) {
-        Log.i(TVApplication.TAG, "custom player load...");
-
-        playSets.clear();
-        mediaUrls.clear();
-
-        playSets.add(playSet);
-        mediaUrls = playSet.toMediaUrls();
-        adTotalDuration = playSet.getDuration();
-
-        // TODO: load ad's playSet
-//        player.setMediaSource(...);
-        player.prepare();
-    }
-
-    @Override
-    public void append(PlaySet playSet) {
-        // TODO: implementation
-
-        mediaUrls.addAll(playSet.toMediaUrls());
-        adTotalDuration += playSet.getDuration();
-
-        int lastIndex = playSets.size() - 1;
-        playSets.add(playSet);
-    }
-
-    @Override
     public String currentMediaUrl() {
-        return mediaUrls.get(currentMediaUrlIndex);
+        return mediaUrls.get(getCurrentMediaUnitIndex());
     }
 
     @Override
     public void pause() {
         Log.i(TVApplication.TAG, "pause...");
+        player.pause();
+        isAdPlaying = false;
+
+        for (AnypointAdPlayer.AnypointAdPlayerCallback videoAdPlayerCallback : videoAdPlayerCallbacks) {
+            videoAdPlayerCallback.onPause(currentMediaUrl());
+        }
     }
 
     @Override
     public void release() {
         Log.i(TVApplication.TAG, "release...");
-
-        stopChannel();
     }
 
     @Override
     public void resume() {
+        Log.i(TVApplication.TAG, "resume...");
+        isAdPlaying = true;
+
+        player.play();
+        for (AnypointAdPlayer.AnypointAdPlayerCallback videoAdPlayerCallback : videoAdPlayerCallbacks) {
+            videoAdPlayerCallback.onResume(currentMediaUrl());
+        }
     }
 
     @Override
     public void stop() {
+        isAdPlaying = false;
+        playChannel();
         for (AnypointAdPlayer.AnypointAdPlayerCallback videoAdPlayerCallback : videoAdPlayerCallbacks) {
             videoAdPlayerCallback.onStopped();
         }
@@ -187,19 +197,18 @@ public class ChannelPlayerWithAd implements AnypointAdPlayer, Player.Listener {
     @Override
     public void onPlayerError(PlaybackException error) {
         for (AnypointAdPlayer.AnypointAdPlayerCallback videoAdPlayerCallback : videoAdPlayerCallbacks) {
-            videoAdPlayerCallback.onError(mediaUrls.get(player.getCurrentPeriodIndex()), error);
+            videoAdPlayerCallback.onError(mediaUrls.get(player.getCurrentMediaItemIndex()), error);
         }
     }
 
     @Override
     public boolean isAdPlaying() {
-        // TODO: implementation
-        return true;
+        return isAdPlaying;
     }
 
     @Override
     public int getCurrentMediaUnitIndex() {
-        return player.getCurrentPeriodIndex();
+        return player.getCurrentMediaItemIndex();
     }
 
     @Override

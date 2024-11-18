@@ -1,11 +1,15 @@
 package tv.anypoint.lineartv.sample;
 
+import android.view.View;
+import com.google.android.exoplayer2.ui.PlayerView;
 import tv.anypoint.api.ads.AnypointAdsManager;
 
 class AdsManagerListenerImpl implements AnypointAdsManager.AdsManagerListener {
     private final ChannelPlayer channelPlayer;
-    public AdsManagerListenerImpl(ChannelPlayer channelPlayer) {
+    private final PlayerView adPlayerView;
+    public AdsManagerListenerImpl(ChannelPlayer channelPlayer, PlayerView adPlayerView) {
         this.channelPlayer = channelPlayer;
+        this.adPlayerView = adPlayerView;
     }
 
     @Override
@@ -15,6 +19,7 @@ class AdsManagerListenerImpl implements AnypointAdsManager.AdsManagerListener {
 
     public void onPlay(boolean retainChannelStream) {
         channelPlayer.setVolume(0);
+        adPlayerView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -34,6 +39,7 @@ class AdsManagerListenerImpl implements AnypointAdsManager.AdsManagerListener {
 
     public void onStopped(boolean retainChannelStream) {
         channelPlayer.setVolume(1);
+        adPlayerView.setVisibility(View.GONE);
     }
 
     @Override
