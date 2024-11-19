@@ -1,4 +1,0 @@
-tv.anypoint.lineartv.sample.test-androidTest-0 /Users/ryan/__work/src/stb-sample/stb-iptv-sample/build/generated/res/resValues/androidTest/debug
-tv.anypoint.lineartv.sample.test-mergeDebugAndroidTestResources-1 /Users/ryan/__work/src/stb-sample/stb-iptv-sample/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
-tv.anypoint.lineartv.sample.test-mergeDebugAndroidTestResources-2 /Users/ryan/__work/src/stb-sample/stb-iptv-sample/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
-tv.anypoint.lineartv.sample.test-merged_res-3 /Users/ryan/__work/src/stb-sample/stb-iptv-sample/build/intermediates/merged_res/debugAndroidTest

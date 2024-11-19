@@ -75,3 +75,6 @@ fabric.properties
 !/local.properties
 /.idea/
 /local.properties
+
+.gradle/
+build/
