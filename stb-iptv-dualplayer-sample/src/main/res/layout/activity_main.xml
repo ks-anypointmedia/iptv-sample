@@ -30,4 +30,11 @@
             android:visibility="gone"
     />
 
+    <Button
+            android:id="@+id/requestAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:text="@string/request_ad"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

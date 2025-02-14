@@ -29,16 +29,21 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
+
         PlayerView channelView = findViewById(R.id.channelPlayer);
         SimpleExoPlayer simpleExoPlayer = new SimpleExoPlayer.Builder(this).build();
         channelView.setPlayer(simpleExoPlayer);
 
         channelPlayer = new ChannelPlayer(this, simpleExoPlayer);
 
+        AnypointAdView adView = findViewById(R.id.linearTvAdView);
         AnypointAdsManager.AdsManagerListener adsManagerListener = new AdsManagerListenerImpl(channelPlayer);
+        adsManager = adView.getAnypointAdsManager();
         adsManager.addListener(adsManagerListener);
 
         channelPlayer.playChannel();
+
+        findViewById(R.id.requestAd).setOnClickListener(v -> adsManager.request(new AnypointAdRequest(0, 45000, 30000, 1, null, "1")));
     }
 
     @Override
@@ -73,7 +78,7 @@ public class MainActivity extends Activity {
                     break;
                 case KeyEvent.KEYCODE_DPAD_CENTER:
                     // ex) ad request
-                    adsManager.request(new AnypointAdRequest(0, 720000, 30000, 1, null));
+                    adsManager.request(new AnypointAdRequest(0, 45000, 30000, 1, null, "1"));
                     break;
                 default:
                     Log.d(TAG, "not support key code");

@@ -46,6 +46,8 @@ public class MainActivity extends Activity {
         adsManager.addListener(adsManagerListener);
 
         channelPlayer.playChannel();
+
+        findViewById(R.id.requestAd).setOnClickListener(v -> adsManager.request(new AnypointAdRequest(0, 45000, 30000, 1, null, "1")));
     }
 
     @Override
@@ -86,7 +88,7 @@ public class MainActivity extends Activity {
                     break;
                 case KeyEvent.KEYCODE_DPAD_CENTER:
                     // ex) ad request
-                    adsManager.request(new AnypointAdRequest(0, 720000, 30000, 1, null,"46"));
+                    adsManager.request(new AnypointAdRequest(0, 45000, 30000, 1, null, "1"));
                     break;
                 default:
                     Log.d(TAG, "not support key code");
